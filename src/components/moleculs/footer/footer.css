@@ -1,0 +1,23 @@
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #0f4977;
+}
+
+.logo-footer-wrapper{
+    margin: 1rem 3rem;
+    width: 100px;
+}
+
+.logo-footer{
+    max-width: 20rem;
+    max-height: 15rem;
+}
+
+.footer-desc{
+    width: 30%;
+    padding: 45px;
+    font-size: 0.95rem;
+    color:#ffffff9d
+}
