@@ -10,13 +10,14 @@ import Search from '../../atoms/search/search'
 
 
 const NavBar = () => {
-    const asd = [{ id: 1, text: "MArni" },
-    { id: 2, text: "Sutri" },
-    { id: 3, text: "Tejo" },
-    { id: 4, text: "Teji Suteji" },
-    { id: 5, text: "asdqwe" },
-    { id: 6, text: "erwe" },
-    { id: 7, text: "dfgdf" }
+    const asd = [
+        { id: 1, text: "Batman" },
+        { id: 2, text: "Spiderman" },
+        { id: 3, text: "Superman" },
+        { id: 4, text: "IronMan" },
+        { id: 5, text: "Thor" },
+        { id: 6, text: "Hulk" },
+        { id: 7, text: "Captain America" }
     ]
 
 
