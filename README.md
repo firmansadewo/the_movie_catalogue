@@ -10,7 +10,7 @@ The data are populated using the `OMDB API (http://www.omdbapi.com/)` and `json-
 
 How to:
 1. Clone this project to your local machine.
-2. Type `npm i` on your console to install any required dependencies.
+2. Type `npm install` on your console to install any required dependencies.
 3. run it locally by using `npm start` or `npm run dev`. 
 
 By default, it will run on port `3000` and run a json-server service at port `9107`

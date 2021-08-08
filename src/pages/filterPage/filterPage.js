@@ -119,16 +119,13 @@ const FilterPage = () => {
                 {isLoading ? <div className="loading-wrapper">
                     <div className="loading" />
                 </div> : filteredData.length != 0 ? filteredData.map((item, index) =>
-                    <div>
-                        <div onClick={() => history.push(`/${item.imdbID}`)} className="filteredData-card" key={index}>
-                            {item.Poster != 'N/A' ? <img className="filter-poster" src={item.Poster} alt="movie-image" /> : <div className="filter-poster">Poster Not Found</div>}
-                            <div className="filter-info-wrapper">
-                                <p className="filter-info-title">{item.Title}</p>
-                                <p className="filter-info-text">Year:  <b>{item.Year}</b></p>
-                                <p className="filter-info-text">Type:  <b>{item.Type}</b></p>
-                            </div>
+                    <div onClick={() => history.push(`/${item.imdbID}`)} className="filteredData-card" key={index}>
+                        {item.Poster != 'N/A' ? <img className="filter-poster" src={item.Poster} alt="movie-image" /> : <div className="filter-poster">Poster Not Found</div>}
+                        <div className="filter-info-wrapper">
+                            <p className="filter-info-title">{item.Title}</p>
+                            <p className="filter-info-text">Year:  <b>{item.Year}</b></p>
+                            <p className="filter-info-text">Type:  <b>{item.Type}</b></p>
                         </div>
-                        <Pagination />
                     </div>
                 ) :
                     <div className="empty-data">
