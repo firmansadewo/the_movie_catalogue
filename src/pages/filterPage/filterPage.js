@@ -11,7 +11,7 @@ const FilterPage = () => {
     const [title, setTitle] = useState("")
     const [year, setYear] = useState("")
     const [page, setPage] = useState(1)
-    const [filteredData, setFilteredData] = useState([])
+    const [filteredData, setFilteredData] = useState(null)
     const [isLoading, setisLoading] = useState(false)
     const [isSubmitted, setisSubmitted] = useState(false)
     const [isBottom, setisBottom] = useState(false)
@@ -31,7 +31,7 @@ const FilterPage = () => {
         let filter = movieId + judul + tahun + halaman
         setisSubmitted(true)
         setisBottom(false)
-        setFilteredData([])
+        setFilteredData(null)
         getFilteredData(filter)
     }
 
@@ -40,7 +40,7 @@ const FilterPage = () => {
         setTitle('')
         setYear('')
         setPage(1)
-        setFilteredData([])
+        setFilteredData(null)
         setisSubmitted(false)
         setisBottom(false)
     }
@@ -50,8 +50,11 @@ const FilterPage = () => {
         setisLoading(false)
         setPage(pageParams || 1)
 
+        if (typeof filtering == Object) {
+            setFilteredData(filtering.data)
+        }
         // cek apakah data lebih dari 5 untuk infinite scroll
-        if (filtering.data?.Search?.length > 5 && !isBottom) {
+        else if (filtering.data?.Search?.length > 5 && !isBottom) {
             setFilteredData(filtering.data.Search.filter((_, idx) => idx < 5))
         }
         else if (filtering.data?.Search?.length > 5 && isBottom) {
@@ -117,7 +120,7 @@ const FilterPage = () => {
             <section>
                 {isLoading ? <div className="loading-wrapper">
                     <div className="loading" />
-                </div> : filteredData.length != 0 ? filteredData.map((item, index) =>
+                </div> : filteredData != null && filteredData.length != 0 ? filteredData.map((item, index) =>
                     <div onClick={() => history.push(`/${item.imdbID}`)} className="filteredData-card" key={index}>
                         {item.Poster != 'N/A' ? <img className="filter-poster" src={item.Poster} alt="movie-image" /> : <div className="filter-poster">Poster Not Found</div>}
                         <div className="filter-info-wrapper">
@@ -127,13 +130,23 @@ const FilterPage = () => {
                         </div>
                     </div>
                 ) :
-                    <div className="empty-data">
-                        <span>
-                            <img src="" alt="" />
-                            <p>Tidak ada data.</p>
-                            {/* <p>{error}</p> */}
-                        </span>
-                    </div>}
+                    filteredData != null && typeof filteredData == Object ?
+                        <div onClick={() => history.push(`/${filteredData.imdbID}`)} className="filteredData-card">
+                            {filteredData.Poster != 'N/A' ? <img className="filter-poster" src={filteredData.Poster} alt="movie-image" /> : <div className="filter-poster">Poster Not Found</div>}
+                            <div className="filter-info-wrapper">
+                                <p className="filter-info-title">{filteredData.Title}</p>
+                                <p className="filter-info-text">Year:  <b>{filteredData.Year}</b></p>
+                                <p className="filter-info-text">Type:  <b>{filteredData.Type}</b></p>
+                            </div>
+                        </div>
+                        :
+                        <div className="empty-data">
+                            <span>
+                                <img src="" alt="" />
+                                <p>Tidak ada data.</p>
+                                {/* <p>{error}</p> */}
+                            </span>
+                        </div>}
             </section>
         </section>
     );
