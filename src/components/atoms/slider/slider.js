@@ -12,7 +12,6 @@ const Slider = ({ data }) => {
         setDisableNext(refs?.current?.scrollLeft + offsetWidthVal >= scrollWidthVal - 50 ? true : false)
     }
 
-    console.log(refs)
     useEffect(() => {
         checkButton(refs?.current?.offsetWidth, refs?.current?.scrollWidth)
     })

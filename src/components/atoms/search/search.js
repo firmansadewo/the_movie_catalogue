@@ -21,7 +21,6 @@ const Search = ({ placeholder }) => {
         setisLoading(true)
         let search = await axios.post(`${url}&s=${searchTerm}`)
         setisLoading(false)
-        console.log(search)
         if (search.data.Response == "False") {
             setError(search.data.Error)
             return setData([])
@@ -29,8 +28,6 @@ const Search = ({ placeholder }) => {
         setData(search.data.Search)
 
     }
-
-    console.log(data)
 
     const searchResult = useMemo(() => {
         if (data != null || data.length != 0) {
