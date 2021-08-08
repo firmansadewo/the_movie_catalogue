@@ -12,5 +12,6 @@ How to:
 1. Clone this project to your local machine.
 2. Type `npm install` on your console to install any required dependencies.
 3. run it locally by using `npm start` or `npm run dev`. 
-
 By default, it will run on port `3000` and run a json-server service at port `9107`
+
+Notes: If there is something wrong with `npm install`, please kindly check and update the npm version.
