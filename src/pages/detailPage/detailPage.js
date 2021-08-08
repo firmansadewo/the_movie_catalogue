@@ -61,7 +61,7 @@ const DetailPage = () => {
             fetchDetail()
         }, 500)
 
-    }, [])
+    }, [id])
 
 
     return (

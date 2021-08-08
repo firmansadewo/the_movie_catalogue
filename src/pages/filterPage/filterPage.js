@@ -5,7 +5,6 @@ import { useParams, useHistory } from "react-router";
 import axios from 'axios'
 
 import './filterPage.css'
-import Pagination from "../../components/atoms/pagination/pagination";
 
 const FilterPage = () => {
     const [id, setID] = useState("")
